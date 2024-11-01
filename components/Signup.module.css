@@ -1,0 +1,91 @@
+
+.container h1 {
+  text-align: center;
+  direction: rtl;
+}
+
+.form {
+  margin: auto;
+  margin-top: 50px;
+  width: 470px;
+  height: 596px;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e4e4e4;
+  /* justify-content: center; */
+  background: #ffffff;
+}
+.form div {
+  display: flex;
+  flex-direction: column;
+  margin: 1.2rem;
+}
+.form div h1 {
+  font-family: Vazirmatn;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 37.5px;
+  color: #282828;
+}
+.form img {
+  width: 80px;
+  height: 84.47px;
+  margin: auto;
+}
+
+.form input {
+  width: Fixed (400px) px;
+  height: Fixed (50px) px;
+  background: #f2f2f2;
+  margin: 10px;
+  padding: 22px 15px 22px 15px;
+  outline: none;
+  border: 0;
+  border-radius: 15px;
+  opacity: 0px;
+  font-family: Vazirmatn;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+  text-align: right;
+  color: #28282880;
+}
+.form button {
+  width: Fixed (400px) px;
+  height: Fixed (53px) px;
+  left: 520px;
+  padding: 10px;
+  border-radius: 15px;
+  opacity: 0px;
+  background: #55a3f0;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  font-family: Vazirmatn;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 31.25px;
+  text-align: center;
+  margin: 20px 10px;
+}
+.form a {
+  width: 127px;
+  height: 25px;
+  opacity: 0px;
+  font-family: Vazirmatn;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+  text-align: right;
+  color: #3a8bed;
+  margin:  15px;
+  text-decoration: none;
+}
+.form span{
+  height: 5px;
+  font-family: Vazirmatn;
+  font-size: 12px;
+  color: red; 
+  margin:  0px 10px 11px 0px;
+}
