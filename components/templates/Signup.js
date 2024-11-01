@@ -1,24 +1,22 @@
 import { useForm } from "react-hook-form";
 import styles from "./Signup.module.css";
-import { useState } from "react";
-import Link from "next/link"
-function Signup() {
-  const [passwordError, setPasswordError] = useState("");
+import Link from "next/link";
 
+function Signup({ submitHandler }) {
   const {
     register,
     handleSubmit,
-    trigger,
     formState: { errors },
+    getValues, 
   } = useForm();
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-  };
   return (
     <div className={styles.container}>
       <h1>بوت کمپ بوتواستارت</h1>
-      <form className={styles.form} onSubmit={handleSubmit(submitHandler)}>
+      <form
+        className={styles.form}
+        onSubmit={handleSubmit(submitHandler)}
+      >
         <div>
           <img src="/images/Union.png" alt="" />
           <h1>فرم ثبت نام</h1>
@@ -35,7 +33,7 @@ function Signup() {
 
         <label htmlFor="pass"></label>
         <input
-          type="text"
+          type="password" 
           placeholder="رمز عبور"
           id="pass"
           {...register("pass", { required: "رمز عبور اجباریست" })}
@@ -44,15 +42,17 @@ function Signup() {
 
         <label htmlFor="confirm"></label>
         <input
-          type="text"
+          type="password" 
           placeholder="تکرار رمز عبور"
           id="confirm"
           {...register("confirm", {
             required: "تکرار رمز عبور اجباریست",
+            validate: (value) =>
+              value === getValues("pass") ||
+              "رمز عبور و تکرار آن مطابقت ندارند", 
           })}
         />
         {errors.confirm && <span>{errors.confirm.message}</span>}
-        {passwordError && <span>{passwordError}</span>}
 
         <button>ثبت نام</button>
         <span>

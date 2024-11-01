@@ -1,10 +1,35 @@
-import React from 'react'
-import Signup from './templates/Signup'
+import { useRegister } from "../services/mutations";
+import { useRouter } from "next/router";
+import Signup from "./templates/Signup";
+
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Register() {
-  return (
-    <Signup/>
-  )
+  const { mutate } = useRegister();
+  const router = useRouter();
+
+  const submitHandler = async (data) => {
+    mutate(
+      { username: data.user, password: data.pass },
+      {
+        onSuccess: () => {
+          toast.success("ثبت نام با موفقیت انجام شد", { autoClose: 3000 });
+          router.push("/login");
+        },
+        onError: (error) => {
+          if (error.response?.data?.message === "User already exists") {
+            toast.error("کاربر قبلاً ثبت نام کرده است", { autoClose: 3000 });
+            router.push("/login");
+          } else {
+            toast.error("مشکلی پیش آمد", { autoClose: 3000 });
+          }
+        },
+      }
+    );
+  };
+
+  return <Signup submitHandler={submitHandler} />;
 }
 
-export default Register
+export default Register;
