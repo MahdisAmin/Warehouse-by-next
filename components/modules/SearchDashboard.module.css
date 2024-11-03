@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.logoutBtn {
+  display: flex;
+  width: 1140px;
+  justify-content: flex-end;
+  align-items: center;
+}
+.logoutBtn button {
+  line-height: 15px;
+  font-family: inherit;
+  padding: 5px;
+  font-size: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #e4e4e4;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.inputHolder {
+  display: flex;
+  width: 1140px;
+  height: 68px;
+  border-radius: 16px;
+  margin: auto;
+  background: #ffffff;
+  border: 1px solid #e4e4e4;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+.search {
+  display: flex;
+  align-items: center;
+ 
+}
+.inputHolder input {
+  border: 0;
+  height: 35px;
+  font-size: 16px;
+  font-family: inherit;
+  margin-right: 5px;
+  outline: none;
+  width: 400px;
+  background-color: transparent;
+  margin-top: 5px;
+}
+.userHolder {
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #e4e4e480;
+  width: 150px;
+  padding: 10px;
+}
+.userHolder img {
+  width: 46px;
+  height: 46px;
+  border: 1px solid #e4e4e480;
+  border-radius: 50%;
+}
+.userHolder div {
+  margin-left: 10px;
+}
+.userHolder p {
+  color: black;
+  font-size: 16px;
+}
+.userHolder span {
+  font-size: 12px;
+  color: #282828;
+}

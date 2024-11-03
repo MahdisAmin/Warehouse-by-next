@@ -1,0 +1,49 @@
+.tableContainer {
+  width: 1140px;
+  min-height: 737px;
+  border-radius: 30px;
+  border: 1px solid #e4e4e4;
+  margin: auto;
+  background: #ffffff;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.tableContainer table {
+  border-collapse: collapse;
+  width: 1140px;
+  margin: auto;
+}
+.tableContainer thead {
+  background: #f2f2f2;
+  width: 1140px;
+  height: 70px;
+  color: #282828;
+  text-align: right;
+}
+
+.tableContainer th {
+  padding-right: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #282828;
+}
+.tableContainer table th:first-child {
+  border-top-right-radius: 30px;
+}
+.tableContainer table th:last-child {
+  border-top-left-radius: 30px;
+  /* width: 100px; */
+}
+.tableContainer td {
+  height: 50px;
+  overflow: hidden;
+  padding: 30px 50px;
+  font-size: 12px;
+  border-bottom: 1px solid #e4e4e4;
+}
+.tableContainer button {
+  background: transparent;
+  border: none;
+  font-size: 15px;
+  padding-right: 20px;
+}

@@ -1,22 +1,47 @@
-import { useState } from "react";
+// import { useGetAllProducts } from "../services/querie";
+// import { deleteCookie } from "../utils/cookie";
 
-import styles from "../styles/index.module.css";
+// import ProductsTable from "../components/templates/ProductsTable";
+// function index() {
+//
 
-import { useRoure } from "next/router";
+//   const totalPages = data?.data.totalPages;
 
-import { useGetAllProducts } from "../services/querie";
+//   return (
+//     <>
+//
+
+//
+//       <Pagination
+//         currentPage={currentPage}
+//         totalPage={totalPages}
+//         onPageChange={setCurrentPage}
+//       /> */}
+//     </>
+//   );
+// }
+
+// export default index;
+import React, { useState } from "react";
+import SearchDashboard from "../components/modules/SearchDashboard";
+import ProductsTable from "../components/templates/ProductsTable";
+import AddModal from "../components/modals/AddModal";
 import { deleteCookie } from "../utils/cookie";
+import { useGetAllProducts } from "../services/querie";
 
-import AiOutlineProduct from "react-icons";
+import { useRouter } from "next/router";
+import Definition from "../components/modules/Definition";
+
 function index() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const { data } = useGetAllProducts(currentPage);
+  const router = useRouter();
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const { data } = useGetAllProducts(currentPage);
   const products = data?.data || [];
 
-  const router = useRoure();
   const openModel = () => {
     setIsModalOpen(true);
   };
@@ -25,39 +50,24 @@ function index() {
     setIsModalOpen(false);
   };
 
+  const addProductsHandler = (newProducts) => {
+    console.log(newProducts);
+  };
   const logOutHandler = () => {
     deleteCookie("token");
     router.push("/login");
   };
 
-  const addProductsHandler = (newProducts) => {
-    console.log(newProducts);
-  };
-
-  const totalPages = data?.data.totalPages;
-
   return (
     <>
-      <SearchDashboard
-        logOutHandler={logOutHandler}
-        products={products.data}
-        setFilteredProducts={setFilteredProducts}
-      />
+      <div>
+        <SearchDashboard
+          logOutHandler={logOutHandler}
+          products={products.data}
+          setFilteredProducts={setFilteredProducts}
+        />
 
-      <div className={styles.addContainer}>
-        <div>
-          <p>
-            <AiOutlineProduct
-              style={{ marginLeft: "10px", marginTop: "1px" }}
-            />
-            مدیرت کالا
-          </p>
-        </div>
-        <div>
-          <button onClick={openModel}>افزودن محصول</button>
-        </div>
-      </div>
-      <div className={styles.tableContainer}>
+        <Definition openModel={openModel} />
         <ProductsTable
           products={filteredProducts}
           setCurrentPage={setCurrentPage}
@@ -68,11 +78,6 @@ function index() {
         isOpen={isModalOpen}
         onClose={closeModale}
         onCreat={addProductsHandler}
-      />
-      <Pagination
-        currentPage={currentPage}
-        totalPage={totalPages}
-        onPageChange={setCurrentPage}
       />
     </>
   );

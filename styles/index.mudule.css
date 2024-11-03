@@ -1,0 +1,27 @@
+.addContainer {
+  display: flex;
+  width: 1140px;
+  height: 68px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  /* background-color: red; */
+  margin: auto;
+}
+.addContainer p {
+  font-size: 24px;
+  color: #282828;
+  padding: 5px;
+}
+.addContainer button {
+  width: Fixed (132px) px;
+  height: Hug (45px) px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #55a3f0;
+  color: #fff;
+  font-family: inherit;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
