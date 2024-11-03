@@ -1,9 +1,11 @@
 import React from 'react'
-import SignIn from '../components/templates/SignIn'
+import Login from '../components/Login'
 
 function login() {
+
+  
   return (
-    <SignIn/>
+    <Login/>
   )
 }
 

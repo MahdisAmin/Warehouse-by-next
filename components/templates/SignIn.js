@@ -2,10 +2,8 @@ import styles from "./SignIn.module.css";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
 
-function SignIn() {
-  const onSubmit = (e) => {
-    e.preventDefault();
-  };
+function SignIn({onSubmit}) {
+
   const {
     register,
     handleSubmit,

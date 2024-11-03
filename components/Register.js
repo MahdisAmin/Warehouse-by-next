@@ -18,12 +18,18 @@ function Register() {
           router.push("/login");
         },
         onError: (error) => {
-          if (error.response?.data?.message === "User already exists") {
-            toast.error("کاربر قبلاً ثبت نام کرده است", { autoClose: 3000 });
-            router.push("/login");
-          } else {
-            toast.error("مشکلی پیش آمد", { autoClose: 3000 });
-          }
+        
+          try {
+            if (error.response?.data?.message === "User already exists") {
+              toast.error("کاربر قبلاً ثبت نام کرده است", { autoClose: 3000 });
+              router.push("/login");
+            } else {
+              toast.error("مشکلی پیش آمد", { autoClose: 3000 });
+            }
+          
+        } catch (error) {
+          return
+        }
         },
       }
     );
