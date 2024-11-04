@@ -1,4 +1,3 @@
-
 // function index() {
 //
 
@@ -18,18 +17,28 @@
 // }
 
 // export default index;
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchDashboard from "../components/modules/SearchDashboard";
 import ProductsTable from "../components/templates/ProductsTable";
 import AddModal from "../components/modals/AddModal";
-import { deleteCookie } from "../utils/cookie";
+import { deleteCookie, getCookie } from "../utils/cookie";
 import { useGetAllProducts } from "../services/querie";
 
 import { useRouter } from "next/router";
 import Definition from "../components/modules/Definition";
+import { toast } from "react-toastify";
 
 function index() {
   const router = useRouter();
+  useEffect(() => {
+    const token = getCookie("token");
+    if (!token) {
+      toast.error("شما مجوز دسترسی به این صفحه را ندارید", {
+        autoClose: 3000,
+      });
+      router.push("./login");
+    }
+  });
 
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredProducts, setFilteredProducts] = useState([]);
