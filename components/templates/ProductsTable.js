@@ -5,8 +5,8 @@ import {
 } from "../../services/mutations";
 
 import Table from "../modules/Table";
-// import DeleteModal from "./DeleteModal";
-// import EditModal from "./EditModal";
+import DeleteModal from "../modals/DeleteModal";
+import EditModal from "../modals/EditModal";
 import styles from "./ProductsTable.module.css"
 import { useGetAllProducts } from "../../services/querie";
 
@@ -74,7 +74,7 @@ function ProductsTable({ products, setCurrentPage, currentPage }) {
         openDeleteModal={openDeleteModal}
       />
 
-      {/* <DeleteModal
+       <DeleteModal
         isOpen={isDeleteModalOpen}
         onClose={closeDeleteModal}
         onDelete={deleteHandler}
@@ -85,7 +85,7 @@ function ProductsTable({ products, setCurrentPage, currentPage }) {
         isOpen={isEditModalOpen}
         onClose={closeEditModal}
         onSave={editHandler}
-      /> */}
+      /> 
     </>
   );
 }
