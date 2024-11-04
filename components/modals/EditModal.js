@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import "../styles/AddModal.css";
+import styles from "./AddModal.module.css"
 
 function EditModal({ isOpen, onClose, onSave, product }) {
   const [name, setName] = useState("");
@@ -34,7 +34,7 @@ function EditModal({ isOpen, onClose, onSave, product }) {
   };
 
   return (
-    <div className="modal">
+    <div className={styles.modal}>
       <form onSubmit={handleSave}>
         <h2>ویرایش محصول</h2>
         <label htmlFor="kala">نام کالا</label>
@@ -64,11 +64,11 @@ function EditModal({ isOpen, onClose, onSave, product }) {
           placeholder="قیمت"
         />
 
-        <div className="btnHolder">
-          <button className="first" type="submit">
+        <div className={styles.btnHolder}>
+          <button className={styles.first} type="submit">
             ویرایش
           </button>
-          <button className="last" type="button" onClick={onClose}>
+          <button className={styles.last} type="button" onClick={onClose}>
             انصراف
           </button>
         </div>
