@@ -1,0 +1,106 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #3333337d;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+  align-items: center;
+  backdrop-filter: blur(5px);
+}
+.modal form {
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 460px;
+  height: 448px;
+  top: 288px;
+  left: 490px;
+  gap: 0px;
+  border-radius: 30px;
+  opacity: 0px;
+  z-index: 2;
+}
+.modal h2 {
+  width: 156px;
+  height: 31px;
+  top: 30px;
+  left: 152px;
+  gap: 0px;
+  opacity: 0px;
+  color: #282828;
+  font-family: Vazirmatn;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 31.25px;
+  text-align: right;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.modal label {
+  width: 39px;
+  height: 22px;
+  top: 91px;
+  left: 385px;
+  gap: 0px;
+  opacity: 0px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21.88px;
+  text-align: right;
+  color: #282828;
+  margin-top: 5px;
+}
+.modal input {
+  width: Fixed (389px) px;
+  height: Hug (42px) px;
+  top: 119px;
+  left: 35px;
+  padding: 15px;
+  gap: 10px;
+  border-radius: 8px;
+  opacity: 0px;
+  background: #f2f2f2;
+  border: none;
+  margin-bottom: 5px;
+  outline: none;
+}
+.btnHolder {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.first,
+.last {
+  width: 50%;
+  height: Hug (42px) px;
+  top: 375px;
+  left: 239px;
+  padding: 10px;
+  gap: 10px;
+  border-radius: 10px;
+  opacity: 0px;
+  font-family: inherit;
+  margin: 10px;
+  border: none;
+}
+
+.first {
+  background-color: #55a3f0;
+  color: #fff;
+}
+
+.last {
+  background: #dfdfdf;
+}
+.modal span {
+  color: red;
+  font-size: 10px;
+  padding-top: 0px;
+}

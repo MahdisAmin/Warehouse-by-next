@@ -1,7 +1,4 @@
-// import { useGetAllProducts } from "../services/querie";
-// import { deleteCookie } from "../utils/cookie";
 
-// import ProductsTable from "../components/templates/ProductsTable";
 // function index() {
 //
 
@@ -10,7 +7,6 @@
 //   return (
 //     <>
 //
-
 //
 //       <Pagination
 //         currentPage={currentPage}

@@ -1,5 +1,5 @@
 import React from "react";
-// import "../styles/AddModal.css";
+import styles from ".//AddModal.module.css";
 
 import { useForm } from "react-hook-form";
 import { addProductsMutation } from "../../services/mutations";
@@ -27,7 +27,7 @@ function AddModal({ isOpen, onClose, onCreat }) {
 
   if (!isOpen) return;
   return (
-    <div className="modal">
+    <div className={styles.modal}>
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <h2>ایجاد محصول جدید</h2>
@@ -35,7 +35,7 @@ function AddModal({ isOpen, onClose, onCreat }) {
           <input
             placeholder="نام کالا"
             type="text"
-          id="kala"
+            id="kala"
             {...register("name", { required: "نام محصول اجباریست" })}
           />
           {errors.name && <span>{errors.name.message}</span>}
@@ -61,11 +61,11 @@ function AddModal({ isOpen, onClose, onCreat }) {
             })}
           />
           {errors.price && <span>{errors.price.message}</span>}
-          <div className="btnHolder">
-            <button className="first" type="submit">
+          <div className={styles.btnHolder}>
+            <button className={styles.first} type="submit">
               ایجاد
             </button>
-            <button className="last" type="button" onClick={onClose}>
+            <button className={styles.last} type="button" onClick={onClose}>
               انصراف
             </button>
           </div>
