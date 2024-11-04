@@ -1,9 +1,11 @@
 import React from 'react'
 import { AiOutlineProduct } from "react-icons/ai";
 
+import styles from "./Definition.module.css"
+
 function Definition({ openModel }) {
   return (
-    <div>
+    <div className={styles.addContainer}>
       <div>
         <p>
           <AiOutlineProduct style={{ marginLeft: "10px", marginTop: "1px" }} />
