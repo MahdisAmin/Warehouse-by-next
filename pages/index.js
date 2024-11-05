@@ -27,6 +27,7 @@ import { useGetAllProducts } from "../services/querie";
 import { useRouter } from "next/router";
 import Definition from "../components/modules/Definition";
 import { toast } from "react-toastify";
+import Pagination from "../components/modules/Pagination";
 
 function index() {
   const router = useRouter();
@@ -62,6 +63,7 @@ function index() {
     deleteCookie("token");
     router.push("/login");
   };
+  const totalPages = data?.data.totalPages;
 
   return (
     <>
@@ -83,6 +85,11 @@ function index() {
         isOpen={isModalOpen}
         onClose={closeModale}
         onCreat={addProductsHandler}
+      />
+      <Pagination
+        currentPage={currentPage}
+        totalPage={totalPages}
+        onPageChange={setCurrentPage}
       />
     </>
   );

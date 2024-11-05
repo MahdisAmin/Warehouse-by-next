@@ -2,27 +2,37 @@ import React, { useEffect, useState } from "react";
 
 import styles from "./SearchDashboard.module.css";
 
-import useDebounce from "../../hooks/useDebounce"
+import useDebounce from "../../hooks/useDebounce";
 
 import { CiLogout, CiSearch } from "react-icons/ci";
+import axios from "axios";
+import api from "../../pages/api/api";
 
-function SearchDashboard({ logOutHandler, products, setFilteredProducts }) {
+function SearchDashboard({ logOutHandler, setFilteredProducts }) {
   const [searchName, setSearchName] = useState("");
   const debouncedSearchName = useDebounce(searchName, 300);
 
-  const handleFilter = (filtered) => {
-    setFilteredProducts(filtered);
-  };
-  useEffect(() => {
-    const filtered = products?.filter((product) => {
-      const nameMatch = product?.name
-        .toLowerCase()
-        .includes(debouncedSearchName.toLowerCase());
-      return nameMatch;
-    });
+  const fetchFilteredProducts = async (searchTerm) => {
+    try {
+      const response = await api.get("/products", {
+        params: {
+          name: searchTerm,
+        },
+      });
 
-    handleFilter(filtered);
-  }, [debouncedSearchName, products]);
+      setFilteredProducts(response.data.data);
+    } catch (error) {
+      console.error("خطا در بارگذاری محصولات:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (debouncedSearchName.trim() !== "") {
+      fetchFilteredProducts(debouncedSearchName);
+    } else {
+      fetchFilteredProducts("");
+    }
+  }, [debouncedSearchName]);
 
   return (
     <div className={styles.container}>
