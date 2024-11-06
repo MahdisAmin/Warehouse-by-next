@@ -44,8 +44,11 @@ function index() {
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [notFound, setNotFound] = useState(false);
+  const [searchName, setSearchName] = useState("");
 
-  const { data } = useGetAllProducts(currentPage);
+
+  const { data } = useGetAllProducts(currentPage,searchName);
   const products = data?.data || [];
 
   const openModel = () => {
@@ -71,15 +74,23 @@ function index() {
         <SearchDashboard
           logOutHandler={logOutHandler}
           products={products.data}
+          searchName={searchName}
+          setSearchName={setSearchName}
           setFilteredProducts={setFilteredProducts}
+          setNotFound={setNotFound}
         />
 
         <Definition openModel={openModel} />
-        <ProductsTable
-          products={filteredProducts}
-          setCurrentPage={setCurrentPage}
-          currentPage={currentPage}
-        />
+
+        {notFound ? (
+          <p>محصولی یافت نشد</p>
+        ) : (
+          <ProductsTable
+            products={filteredProducts}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+          />
+        )}
       </div>
       <AddModal
         isOpen={isModalOpen}
@@ -89,7 +100,7 @@ function index() {
       <Pagination
         currentPage={currentPage}
         totalPage={totalPages}
-        onPageChange={setCurrentPage}
+        setCurrentPage={setCurrentPage}
       />
     </>
   );

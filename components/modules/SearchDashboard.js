@@ -5,24 +5,38 @@ import styles from "./SearchDashboard.module.css";
 import useDebounce from "../../hooks/useDebounce";
 
 import { CiLogout, CiSearch } from "react-icons/ci";
-import axios from "axios";
 import api from "../../pages/api/api";
 
-function SearchDashboard({ logOutHandler, setFilteredProducts }) {
+function SearchDashboard({
+  logOutHandler,
+  products,
+  setFilteredProducts,
+  setNotFound,
+}) {
   const [searchName, setSearchName] = useState("");
   const debouncedSearchName = useDebounce(searchName, 300);
 
   const fetchFilteredProducts = async (searchTerm) => {
     try {
-      const response = await api.get("/products", {
-        params: {
-          name: searchTerm,
-        },
-      });
+      const response = await api.get(`/products?name=${searchTerm}`);
+      const fetchedProducts = response.data.data;
+      console.log(fetchedProducts)
 
-      setFilteredProducts(response.data.data);
+      if (fetchedProducts && fetchedProducts.length > 0) {
+        setNotFound(false);
+        setFilteredProducts(fetchedProducts);
+      } else {
+        setNotFound(true);
+        setFilteredProducts([]);
+      }
     } catch (error) {
-      console.error("خطا در بارگذاری محصولات:", error);
+      if(error.response && error.response?.status === 400) {
+        setNotFound(true);
+        setFilteredProducts([]);
+        return;
+      } else {
+        console.error("خطا در بارگذاری محصولات:");
+      }
     }
   };
 
@@ -30,9 +44,10 @@ function SearchDashboard({ logOutHandler, setFilteredProducts }) {
     if (debouncedSearchName.trim() !== "") {
       fetchFilteredProducts(debouncedSearchName);
     } else {
-      fetchFilteredProducts("");
+      setNotFound(false);
+      setFilteredProducts(products);
     }
-  }, [debouncedSearchName]);
+  }, [debouncedSearchName, products]);
 
   return (
     <div className={styles.container}>

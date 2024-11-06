@@ -3,6 +3,7 @@ import { MdDelete } from "react-icons/md";
 
 import styles from "./Table.module.css";
 function Table({ products, openEditModal, openDeleteModal }) {
+  
   return (
     <div className={styles.tableContainer}>
       <table>
