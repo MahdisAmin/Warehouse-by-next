@@ -5,7 +5,6 @@ function Cards({ info }) {
   const { data } = info;
   return (
     <div>
-      <h1>Shop</h1>
       <div className={style.container}>
         {data.map((product) => (
           <ul>

@@ -1,0 +1,26 @@
+.container{
+    width: 1000px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    background-color: #FCDE70;
+    padding: 20px;
+    border-radius: 20px;
+}
+.about{
+    width: 500px;
+    display: flex;
+}
+.about p{
+    margin-left: 20px;
+    color: #10375c;
+}
+
+.container a{
+    text-decoration: none;
+    background-color: #10375c;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+}

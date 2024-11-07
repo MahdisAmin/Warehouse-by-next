@@ -1,8 +1,14 @@
 import React from "react";
 import Cards from "../../components/templates/Cards";
+import Menu from "../../components/modules/Menu";
 
 function Shop({ info }) {
-  return <Cards info={info} />;
+  return (
+    <>
+      <Menu />
+      <Cards info={info} />
+    </>
+  );
 }
 
 export default Shop;
