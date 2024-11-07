@@ -1,22 +1,3 @@
-// function index() {
-//
-
-//   const totalPages = data?.data.totalPages;
-
-//   return (
-//     <>
-//
-//
-//       <Pagination
-//         currentPage={currentPage}
-//         totalPage={totalPages}
-//         onPageChange={setCurrentPage}
-//       /> */}
-//     </>
-//   );
-// }
-
-// export default index;
 import React, { useEffect, useState } from "react";
 import SearchDashboard from "../components/modules/SearchDashboard";
 import ProductsTable from "../components/templates/ProductsTable";
@@ -47,8 +28,7 @@ function index() {
   const [notFound, setNotFound] = useState(false);
   const [searchName, setSearchName] = useState("");
 
-
-  const { data } = useGetAllProducts(currentPage,searchName);
+  const { data } = useGetAllProducts(currentPage, searchName);
   const products = data?.data || [];
 
   const openModel = () => {
