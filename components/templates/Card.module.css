@@ -11,26 +11,36 @@
   height: 200px;
 }
 .container ul {
-  box-shadow: 1px 1px 10px rgb(206, 203, 203);
+  box-shadow: 1px 1px 10px rgb(167, 165, 165);
   padding: 30px;
   margin-top: 40px;
-  border-radius: 15px;
+  border-radius: 30px;
 }
 .container li {
   list-style: none;
   padding: 10px;
-  font-size: 1.5rem;
-  color: rgb(22, 43, 114);
+  font-size: 1.3rem;
+  color: #605678;
+}
+.detailHolder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .container a {
   text-decoration: none;
+  color: #282828;
+  background-color: #ffbf61;
+  padding: 10px;
+  border-radius: 8px;
+  
 }
 .container p {
-  font-size: 1rem;
-  color: #077979;
+  font-size: 15px;
+  color: #ffbf61;
 }
 .container span {
   font-size: 12px;
-  background-color: #077979;
-  color: white;
+  background-color: #ffe6a5;
+  color: #282828;
 }
