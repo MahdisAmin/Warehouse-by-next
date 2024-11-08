@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import api from "../pages/api/api"
+import { toast } from "react-toastify";
 
 const useRegister = () => {
   const mutationFn = (data) => api.post("auth/register", data);
@@ -20,6 +21,7 @@ const addProductsMutation = () => {
   const mutationFn = (newProduct) => api.post("/products", newProduct);
   const onSuccess = async () => {
     await queryClient.invalidateQueries({ queryKey: ["products"] });
+    toast.success("محصول با موفقیت اضافه شد")
   };
 
   return useMutation({ mutationFn, onSuccess });
@@ -37,6 +39,7 @@ const editProductMutation = () => {
     api.put(`products/${updateProduct.id}`, updateProduct);
   const onSuccess = async () => {
     await queryClient.invalidateQueries({ queryKey: ["products"] });
+    toast.success("محصول با موفقیت ویرایش شد");
   };
 
   return useMutation({ mutationFn, onSuccess });
@@ -48,6 +51,7 @@ const deleteProductMutation = () => {
   const mutationFn = (productId) => api.delete(`/products/${productId}`);
   const onSuccess = async () => {
     await queryClient.invalidateQueries({ queryKey: ["products"] });
+    toast.success("محصول با موفقیت حذف شد");
   };
 
   return useMutation({ mutationFn, onSuccess });

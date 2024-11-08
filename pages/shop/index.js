@@ -13,14 +13,15 @@ function Shop({ info }) {
 
 export default Shop;
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch("http://localhost:3000/products");
   const info = await res.json();
-  // console.log(data.name);
+  console.log(info.data[0]);
 
   return {
     props: {
       info,
+      revalidation: 10,
     },
   };
 }

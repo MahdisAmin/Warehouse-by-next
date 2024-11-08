@@ -23,15 +23,17 @@ function SearchDashboard({
       const fetchedProducts = response.data.data;
       console.log(fetchedProducts);
 
-      if (fetchedProducts && fetchedProducts.length > 0) {
+      if (!fetchedProducts.length) {
+        setNotFound(true);
+        // setFilteredProducts([]);
+      } else {
         setNotFound(false);
         setFilteredProducts(fetchedProducts);
-      } else {
-        setNotFound(true);
-        setFilteredProducts([]);
       }
     } catch (error) {
       if (error.response && error.response?.status === 400) {
+        console.log(error.name);
+        
         setNotFound(true);
         setFilteredProducts([]);
         return;
@@ -54,7 +56,7 @@ function SearchDashboard({
     <div className={styles.container}>
       <div className={styles.logoutBtn}>
         <Link href="/shop">
-          <FaShopify style={{marginLeft:"5px", marginBottom:"-2px"}} />
+          <FaShopify style={{ marginLeft: "5px", marginBottom: "-2px" }} />
           فروشگاه
         </Link>
         <button onClick={logOutHandler}>
