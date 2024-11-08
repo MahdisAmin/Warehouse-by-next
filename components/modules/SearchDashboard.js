@@ -3,9 +3,10 @@ import React, { useEffect, useState } from "react";
 import styles from "./SearchDashboard.module.css";
 
 import useDebounce from "../../hooks/useDebounce";
-
+import { FaShopify } from "react-icons/fa";
 import { CiLogout, CiSearch } from "react-icons/ci";
 import api from "../../pages/api/api";
+import Link from "next/link";
 
 function SearchDashboard({
   logOutHandler,
@@ -20,7 +21,7 @@ function SearchDashboard({
     try {
       const response = await api.get(`/products?name=${searchTerm}`);
       const fetchedProducts = response.data.data;
-      console.log(fetchedProducts)
+      console.log(fetchedProducts);
 
       if (fetchedProducts && fetchedProducts.length > 0) {
         setNotFound(false);
@@ -30,7 +31,7 @@ function SearchDashboard({
         setFilteredProducts([]);
       }
     } catch (error) {
-      if(error.response && error.response?.status === 400) {
+      if (error.response && error.response?.status === 400) {
         setNotFound(true);
         setFilteredProducts([]);
         return;
@@ -52,6 +53,10 @@ function SearchDashboard({
   return (
     <div className={styles.container}>
       <div className={styles.logoutBtn}>
+        <Link href="/shop">
+          <FaShopify style={{marginLeft:"5px", marginBottom:"-2px"}} />
+          فروشگاه
+        </Link>
         <button onClick={logOutHandler}>
           خروج
           <CiLogout style={{ marginRight: "10px" }} />
