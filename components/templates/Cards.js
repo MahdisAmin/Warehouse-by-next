@@ -7,9 +7,9 @@ function Cards({ info }) {
     <div>
       <div className={style.container}>
         {data.map((product) => (
-          <ul>
+          <ul key={product.id}>
             <img src="/images/img.jpg" />
-            <li key={product.id}>{product.name}</li>
+            <li>{product.name}</li>
             <div className={style.detailHolder}>
               <div>
                 <p> قیمت: {product.price} تومان</p>
@@ -18,7 +18,9 @@ function Cards({ info }) {
               <div className={style.linkHolder}>
                 <Link href={`/shop/${product.id}`}>
                   جزییات محصول
-                  <TbArrowBadgeLeftFilled style={{alignItems:"center" , marginBottom:"-4px"}} />
+                  <TbArrowBadgeLeftFilled
+                    style={{ alignItems: "center", marginBottom: "-4px" }}
+                  />
                 </Link>
               </div>
             </div>

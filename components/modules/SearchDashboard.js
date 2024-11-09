@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-
 import styles from "./SearchDashboard.module.css";
-
 import useDebounce from "../../hooks/useDebounce";
 import { FaShopify } from "react-icons/fa";
 import { CiLogout, CiSearch } from "react-icons/ci";
@@ -19,26 +17,25 @@ function SearchDashboard({
 
   const fetchFilteredProducts = async (searchTerm) => {
     try {
+      console.log(`Fetching products for search term: ${searchTerm}`);
       const response = await api.get(`/products?name=${searchTerm}`);
       const fetchedProducts = response.data.data;
-      console.log(fetchedProducts);
 
-      if (!fetchedProducts.length) {
+      if (!fetchedProducts || fetchedProducts.length === 0) {
         setNotFound(true);
-        // setFilteredProducts([]);
+        setFilteredProducts([]);
       } else {
         setNotFound(false);
         setFilteredProducts(fetchedProducts);
       }
     } catch (error) {
-      if (error.response && error.response?.status === 400) {
-        console.log(error.name);
-        
+      if (error.response && error.response.status === 400) {
         setNotFound(true);
         setFilteredProducts([]);
-        return;
+      } else if (error.response) {
+        console.error("Server error:", error.response.status);
       } else {
-        console.error("خطا در بارگذاری محصولات:");
+        console.error("Network or other error:", error);
       }
     }
   };

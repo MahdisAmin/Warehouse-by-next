@@ -63,7 +63,7 @@ function index() {
         <Definition openModel={openModel} />
 
         {notFound ? (
-          <p>محصولی یافت نشد</p>
+          <p style={{marginRight:"50%", color:"red"}}>محصولی یافت نشد</p>
         ) : (
           <ProductsTable
             products={filteredProducts}
