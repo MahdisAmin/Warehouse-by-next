@@ -18,19 +18,25 @@ function Login() {
           router.push("/");
         },
         onError: (error) => {
-          if (error.response?.data?.message === "Invalid credentials") {
+          if (
+            error.response?.data?.message === "Invalid credentials" ||
+            error.response.name === "AxiosError"
+          ) {
             toast.error(
               " کاربری با این مشخصات یافت نشد یا رمز عبور اشتباه است",
               { autoClose: 3000 }
             );
-          }else {
+          } else {
             toast.error("مشکلی پیش آمد", {
               autoClose: 3000,
             });
           }
         },
       }
-    );
+    ).catch((error) => {
+      console.clear()
+      // toast.error("مشکل در برقراری ارتباط" , {autoClose:2000})
+    });
   };
   return <SignIn onSubmit={onSubmit} />;
 }

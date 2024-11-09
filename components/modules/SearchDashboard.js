@@ -30,6 +30,7 @@ function SearchDashboard({
       }
     } catch (error) {
       if (error.response && error.response.status === 400) {
+        console.clear();
         setNotFound(true);
         setFilteredProducts([]);
       } else if (error.response) {
