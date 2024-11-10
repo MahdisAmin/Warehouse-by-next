@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import api from "../pages/api/api"
+import api from "../pages/api/api";
 import { toast } from "react-toastify";
 
 const useRegister = () => {
@@ -21,10 +21,15 @@ const addProductsMutation = () => {
   const mutationFn = (newProduct) => api.post("/products", newProduct);
   const onSuccess = async () => {
     await queryClient.invalidateQueries({ queryKey: ["products"] });
-    toast.success("محصول با موفقیت اضافه شد")
+    toast.success("محصول با موفقیت اضافه شد");
   };
-
-  return useMutation({ mutationFn, onSuccess });
+  const onError = (error) => {
+    if (error.response && error.response.status === 403) {
+      console.clear();
+      toast.error("توکن منقضی شده لطفا مجدد وارد شوید", { autoClose: 2000 });
+    }
+  };
+  return useMutation({ mutationFn, onSuccess, onError });
 };
 
 const getProducts = async () => {
@@ -41,8 +46,13 @@ const editProductMutation = () => {
     await queryClient.invalidateQueries({ queryKey: ["products"] });
     toast.success("محصول با موفقیت ویرایش شد");
   };
-
-  return useMutation({ mutationFn, onSuccess });
+  const onError = (error) => {
+    if (error.response && error.response.status === 403) {
+      console.clear();
+      toast.error("توکن منقضی شده لطفا مجدد وارد شوید", { autoClose: 2000 });
+    }
+  };
+  return useMutation({ mutationFn, onSuccess, onError });
 };
 
 const deleteProductMutation = () => {
@@ -53,8 +63,13 @@ const deleteProductMutation = () => {
     await queryClient.invalidateQueries({ queryKey: ["products"] });
     toast.success("محصول با موفقیت حذف شد");
   };
-
-  return useMutation({ mutationFn, onSuccess });
+  const onError = (error) => {
+    if (error.response && error.response.status === 403) {
+      console.clear();
+      toast.error("توکن منقضی شده لطفا مجدد وارد شوید", { autoClose: 2000 });
+    }
+  };
+  return useMutation({ mutationFn, onSuccess , onError });
 };
 
 export {
