@@ -53,7 +53,7 @@ function SearchDashboard({
   return (
     <div className={styles.container}>
       <div className={styles.logoutBtn}>
-        <Link href="/shop">
+        <Link href="/shop" replace>
           <FaShopify style={{ marginLeft: "5px", marginBottom: "-2px" }} />
           فروشگاه
         </Link>
