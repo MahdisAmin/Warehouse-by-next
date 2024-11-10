@@ -22,6 +22,7 @@ function Register() {
           try {
             if (error.response?.data?.message === "User already exists") {
               toast.error("کاربر قبلاً ثبت نام کرده است", { autoClose: 3000 });
+              console.clear()
               router.push("/login");
             } else {
               toast.error("مشکلی پیش آمد", { autoClose: 3000 });
